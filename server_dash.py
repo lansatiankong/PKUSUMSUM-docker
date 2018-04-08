@@ -212,14 +212,15 @@ def make_app(user: str = 'admin',
         '''
         java -jar PKUSUMSUM.jar –T 1 –input ./article.txt –output ./summay.txt –L 1 –n 100 –m 2 –stop n
         '''
-        return ' '.join(map(str,[n_clicks,T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article]))
+        #return ' '.join(map(str,[n_clicks,T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article]))
         return sumsum(T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article)
     return app
 
 def sumsum(T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article):
     with codecs.open('article.txt','w',encoding='utf-8') as f:
         f.write(article)
-    output = codecs.open('summay.txt','w+',encoding='utf-8')
+    output = codecs.open('summay.txt','w',encoding='utf-8')
+    output.close()
     cmd = 'java -jar PKUSUMSUM.jar –T {} –input ./article.txt –output ./summay.txt –L {} –n {} –m {} –stop {}'.format(T,L,n,m,stop)
     cmd += ' -s {}'.format(stem)
     cmd += ' -R {}'.format(redundancy)
@@ -234,7 +235,10 @@ def sumsum(T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article):
         cmd += ' -A {}'.format(A)
         cmd += ' -lam {}'.format(lam)
     os.popen(cmd)
-    return output.read()
+    output = codecs.open('summay.txt','r',encoding='utf-8')
+    summay = output.read()
+    output.close()
+    return summay
     
 def main():
     app = make_app()
