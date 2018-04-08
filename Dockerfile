@@ -38,7 +38,7 @@ RUN curl -sL --retry 3 --insecure \
 
 # github
 WORKDIR /home/work
-RUN git clone https://github.com/phiedulxp/PKUSUMSUM.git
+RUN git clone https://github.com/phiedulxp/PKUSUMSUM-docker.git
 RUN cd PKUSUMSUM
 
 # pip 
