@@ -205,8 +205,8 @@ def make_app(user: str = 'admin',
                   State('link', 'value'),
                   State('sub', 'value'),
                   State('A', 'value'),
-                  State('lam', 'value')],
-                  State('article', 'value')],
+                  State('lam', 'value'),
+                  State('article', 'value')]
                   )
     def update_output(n_clicks,T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article):
         '''
