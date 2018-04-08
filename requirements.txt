@@ -1,6 +1,4 @@
-flask
 dash
 auth_dash
 dash_core_components
-import dash_html_components
-plotly
+dash_html_components
