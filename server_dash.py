@@ -9,7 +9,7 @@ import sys
 from flask import jsonify
 
 import dash
-import dash_auth
+#import dash_auth
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
@@ -47,11 +47,11 @@ def make_app(user: str = 'admin',
     app = dash.Dash('PKUSUMSUM Demo')
     app.config.supress_callback_exceptions = True
     
-    VALID_USERNAME_PASSWORD_PAIRS = [[user or 'admin', password or 'pkusumsum']]
-    auth = dash_auth.BasicAuth(
-        app,
-        VALID_USERNAME_PASSWORD_PAIRS
-    )
+    #VALID_USERNAME_PASSWORD_PAIRS = [[user or 'admin', password or 'pkusumsum']]
+    #auth = dash_auth.BasicAuth(
+    #    app,
+    #    VALID_USERNAME_PASSWORD_PAIRS
+    #)
 
     app.layout = html.Div(children=[html.Div(style={'width': '49%','float':'left','margin-top':10},children=[
     html.H3(style={'margin-top':10},children='PKUSUMSUM Demo'),
