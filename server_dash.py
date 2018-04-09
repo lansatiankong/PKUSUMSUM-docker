@@ -5,6 +5,7 @@ import logging
 import os
 from string import Template
 import sys
+import subprocess
 
 from flask import jsonify
 
@@ -70,8 +71,8 @@ def make_app(user: str = 'admin',
     dcc.RadioItems(
       id = 'L',
       options=[
-          {'label': "1 – Chinese", 'value': 1},
-          {'label': '2 – English', 'value': 2},
+          {'label': "1 - Chinese", 'value': 1},
+          {'label': '2 - English', 'value': 2},
           {'label': "3 - other Western languages", 'value': 3},
       ],
       value=1,
@@ -123,11 +124,11 @@ def make_app(user: str = 'admin',
     ),
     html.Span('Specify which redundancy removal method is used for summary sentence selection:'),
     dcc.RadioItems(
-    id='redundancy ',
+    id='redundancy',
     options=[
-        {'label': '1 – MMR-based method', 'value': 1},
-        {'label': '2 – Threshold-based method', 'value': 2},
-        {'label': '3 – Penalty imposing method', 'value': 3},
+        {'label': '1 - MMR-based method', 'value': 1},
+        {'label': '2 - Threshold-based method', 'value': 2},
+        {'label': '3 - Penalty imposing method', 'value': 3},
     ],
     value=3,
     labelStyle={'display': 'inline-block'}
@@ -160,7 +161,7 @@ def make_app(user: str = 'admin',
     dcc.RadioItems(
     id='sub',
     options=[
-        {'label': "1 – (Li at el, 2012)", 'value': 1},
+        {'label': "1 - (Li at el, 2012)", 'value': 1},
         {'label': "2 - modification(Lin and Bilmes, 2010)", 'value': 2}
     ],
     value=1,
@@ -199,7 +200,7 @@ def make_app(user: str = 'admin',
                   State('m', 'value'),
                   State('stop', 'value'),
                   State('stem', 'value'),
-                  State('redundancy ', 'value '),
+                  State('redundancy', 'value'),
                   State('p', 'value'),
                   State('beta', 'value'),
                   State('link', 'value'),
@@ -210,7 +211,7 @@ def make_app(user: str = 'admin',
                   )
     def update_output(n_clicks,T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article):
         '''
-        java -jar PKUSUMSUM.jar –T 1 –input ./article.txt –output ./summay.txt –L 1 –n 100 –m 2 –stop n
+        java -jar PKUSUMSUM.jar  -T 1 -input ./article.txt -output ./summay.txt -L 2 -n 10 -m 1 -stop n -s 1 -R 3 -p 0.7 -beta 0.1 -s 1
         '''
         #return ' '.join(map(str,[n_clicks,T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article]))
         return sumsum(T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article)
@@ -221,8 +222,7 @@ def sumsum(T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article):
         f.write(article)
     output = codecs.open('summay.txt','w',encoding='utf-8')
     output.close()
-    cmd = 'java -jar PKUSUMSUM.jar –T {} –input ./article.txt –output ./summay.txt –L {} –n {} –m {} –stop {}'.format(T,L,n,m,stop)
-    cmd += ' -s {}'.format(stem)
+    cmd = 'java -jar PKUSUMSUM.jar -T {} -input ./article.txt -output ./summay.txt -L {} -n {} -m {} -stop {}'.format(T,L,n,m,stop)
     cmd += ' -R {}'.format(redundancy)
     cmd += ' -p {}'.format(p)
     cmd += ' -beta {}'.format(beta)
@@ -234,7 +234,9 @@ def sumsum(T,L,n,m,stop,stem,redundancy,p,beta,link,sub,A,lam,article):
         cmd += ' -sub {}'.format(sub)
         cmd += ' -A {}'.format(A)
         cmd += ' -lam {}'.format(lam)
-    os.popen(cmd)
+    #os.popen(cmd)
+    child = subprocess.Popen(cmd, stdout=subprocess.PIPE,stdin=subprocess.PIPE,stderr=subprocess.PIPE,shell=True,cwd=os.curdir)
+    print(child.stdout.readline(),child.stderr.readline())
     output = codecs.open('summay.txt','r',encoding='utf-8')
     summay = output.read()
     output.close()
