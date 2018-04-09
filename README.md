@@ -1,3 +1,4 @@
+# ![dash_demo](dash_demo.PNG)
 #README
 
 ##Introduction
@@ -5,7 +6,9 @@ PKUSUMSUM (PKU’s SUMmary of SUMmarization methods) is an integrated toolkit fo
 
 Users can easily use the toolkit to produce summaries for documents or document sets, and implement their own summarization methods based on the platform.
 
-Main features of PKUSUMSUM include:* It integrates stable and various summarization methods, and the performance is good enough.
+Main features of PKUSUMSUM include:
+
+* It integrates stable and various summarization methods, and the performance is good enough.
 * It supports three typical summarization tasks, including simple-document, multi-document and topic-focused multi-document summarizations.
 * It supports Western languages (e.g. English) and Chinese language.
 * It integrates English tokenizer, stemmer and Chinese word segmentation tools.
@@ -38,7 +41,8 @@ The correspondence between the summarization methods and the summarization tasks
 * The input documents must be encoded using UTF-8. 
 
 ##Usage
-Open a terminal under the PKUSUMSUM directory and type in:> java -jar PKUSUMSUM.jar <parameters>
+Open a terminal under the PKUSUMSUM directory and type in:
+> java -jar PKUSUMSUM.jar <parameters>
 
 ###Parameters:
 There are several parameters required to be set when using the toolkit. Parameters in the "[]" are optional and they have default values.
@@ -71,24 +75,35 @@ There are several parameters required to be set when using the toolkit. Paramete
 |[-A]|It specifies the threshold coefficient. The range is [0, 1] and the default value is 0.5.|
 |[-lam]|It specifies the trade-off coefficient. The range is [0, 1] and the default value is 0.15 for multi-document summarization and 0.5 for single-document summarization. |
 
-###Example:java -jar PKUSUMSUM.jar –T 1 –input ./article.txt –output ./summay.txt –L 1 –n 100 –m 2 –stop n
+###Example:
+java -jar PKUSUMSUM.jar –T 1 –input ./article.txt –output ./summay.txt –L 1 –n 100 –m 2 –stop n
 
 ##License
 PKUSUMSUM is used under the GNU GPL license.
 
 ##Contact us
 Welcome to contact us if you have any questions or suggestions while using PKUSUMSUM. 
-Contact person: Jianmin Zhang
-Contact email: zhangjianmin2015@pku.edu.cn
+
+Contact person: Jianmin Zhang
+
+Contact email: zhangjianmin2015@pku.edu.cn
 
 ##Reference
 [1]. Radev, Dragomir R., Hongyan Jing, Małgorzata Styś, Daniel Tam. 2004. Centroid-based summarization of multiple documents. Information Processing & Management, 40(6), 919-938.
-[2]. Mihalcea, Rada, and Paul Tarau. 2004. TextRank: Bringing order into texts. Association for Computational Linguistics.
-[3]. Erkan, Günes, and Dragomir R. Radev. 2004. LexPageRank: Prestige in Multi-Document Text Summarization. EMNLP. Vol.4.
-[4]. Gillick, Dan, and Benoit Favre. 2009. A scalable global model for summarization. Proceedings of the Workshop on Integer Linear Programming for Natural Language Processing, Association for Computational Linguistics.
-[5]. Li, Jingxuan, Lei Li, and Tao Li. 2012. Multi-document summarization via submodularity. Applied Intelligence 37.3: 420-430.
-[6]. Lin, Hui, and Jeff Bilmes. 2010. Multi-document summarization via budgeted maximization of submodular functions. Human Language Technologies: The 2010 Annual Conference of the North American Chapter of the Association for Computational Linguistics, Association for Computational Linguistics.
-[7]. Wan, Xiaojun, and Jianwu Yang. 2008. Multi-document summarization using cluster-based link analysis. Proceedings of the 31st annual international ACM SIGIR conference on Research and development in information retrieval, ACM.
-[8]. Wan, Xiaojun, Jianwu Yang, and Jianguo Xiao. 2007. Manifold-Ranking Based Topic-Focused Multi-Document Summarization. IJCAI. Vol. 7.
+
+[2]. Mihalcea, Rada, and Paul Tarau. 2004. TextRank: Bringing order into texts. Association for Computational Linguistics.
+
+[3]. Erkan, Günes, and Dragomir R. Radev. 2004. LexPageRank: Prestige in Multi-Document Text Summarization. EMNLP. Vol.4.
+
+[4]. Gillick, Dan, and Benoit Favre. 2009. A scalable global model for summarization. Proceedings of the Workshop on Integer Linear Programming for Natural Language Processing, Association for Computational Linguistics.
+
+[5]. Li, Jingxuan, Lei Li, and Tao Li. 2012. Multi-document summarization via submodularity. Applied Intelligence 37.3: 420-430.
+
+[6]. Lin, Hui, and Jeff Bilmes. 2010. Multi-document summarization via budgeted maximization of submodular functions. Human Language Technologies: The 2010 Annual Conference of the North American Chapter of the Association for Computational Linguistics, Association for Computational Linguistics.
+
+[7]. Wan, Xiaojun, and Jianwu Yang. 2008. Multi-document summarization using cluster-based link analysis. Proceedings of the 31st annual international ACM SIGIR conference on Research and development in information retrieval, ACM.
+
+[8]. Wan, Xiaojun, Jianwu Yang, and Jianguo Xiao. 2007. Manifold-Ranking Based Topic-Focused Multi-Document Summarization. IJCAI. Vol. 7.
+
 
 
