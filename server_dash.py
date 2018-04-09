@@ -245,7 +245,7 @@ def main():
                    
     app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
     #app.css.append_css({'external_url': 'static_html/demo.css'})
-    app.run_server(port=8080, debug=True)
+    app.run_server(host='0.0.0.0',port=8080, debug=True)
 
 if __name__ == "__main__":
     main()

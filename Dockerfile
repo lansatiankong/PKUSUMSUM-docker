@@ -48,4 +48,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8080
 # dash app
-CMD ['python','server-dash.py']
+CMD ['python','server_dash.py']
